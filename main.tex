@@ -1,0 +1,43 @@
+\documentclass{ptp}
+
+\usepackage[backend=biber, style=authoryear, autocite=footnote]{biblatex}
+
+\addbibresource{lit.bib}
+
+\studiengang{Studiengang}
+\ptp{1}
+\thema{Thema}
+\author{Vorname Nachname}{Geburtsdatum}{Geburtsort}{Adresse}{MatNr.}
+\studiengruppe{Studiengruppe}
+\betreuer{Title Vorname Name}
+\zbetreuer{Title Vorname Name}
+\modul{xxx}
+\abgabe{dd.mm.yyyy}
+\ort{Ort der Abgabe}
+
+\begin{document}
+\maketitle
+\ohead*{\includegraphics[width=4cm]{Bilder/HS-Logo.png}}
+\input{Abschnitte/Abstract.tex}
+\newpage
+\ihead*{Inhaltsverzeichnis}
+\tableofcontents
+\newpage
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\ihead*{Abbildungsverzeichnis}
+\listoffigures
+\newpage
+\addtitleNoNumber{Abkürzungsverzeichnis}
+\newpage
+\addtitleNoNumber{Symbolverzeichnis}
+\newpage
+\addcontentsline{toc}{section}{Tabellenverzeichnis}
+\ihead*{Tabellenverzeichnis}
+\listoftables
+\newpage
+\input{Abschnitte/Einleitung.tex}
+\input{Abschnitte/Theorie.tex}
+\input{Abschnitte/Praxis.tex}
+\input{Abschnitte/Fazit.tex}
+\input{Abschnitte/Anhang.tex}
+\end{document}
