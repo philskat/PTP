@@ -1,1 +1,1 @@
-del main.aux main.bbl main.bcf main.blg main.lof main.log main.lot main.pdf main.run.xml main.toc
+del main.aux main.bbl main.bcf main.blg main.lof main.log main.lot main.pdf main.run.xml main.toc main.fdb_latexmk main.fls main.synctex.gz
