@@ -1,0 +1,49 @@
+name: CI
+
+on:
+    push:
+        branches: [ master ]
+        paths:
+            - Abschnitte/**
+            - Bilder/**
+            - main.tex
+            - ptp.cls
+            - lit.bib
+    pull_request:
+        branches: [ master ]
+        paths:
+            - Abschnitte/**
+            - Bilder/**
+            - main.tex
+            - ptp.cls
+            - lit.bib
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  lfs: 'true'
+
+            - name: Install LaTex
+              run: |
+                sudo apt-get update
+                sudo apt-get install texlive texlive-lang-german texlive-latex-extra biber texlive-bibtex-extra -y
+
+            - name: First Build
+              run: pdflatex main.tex
+              
+            - name: Run Biber
+              run: biber main
+              continue-on-error: true
+            
+            - name: Second Build
+              run: pdflatex main.tex
+            
+            - name: Upload PDF
+              uses: actions/upload-artifact@v2
+              with:
+                  name: main.pdf
+                  path: main.pdf

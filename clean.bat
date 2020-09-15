@@ -1,0 +1,1 @@
+del main.aux main.bbl main.bcf main.blg main.lof main.log main.lot main.pdf main.run.xml main.toc
