@@ -1,4 +1,5 @@
-![CI](https://github.com/TheDarkMen3000/PTP/workflows/CI/badge.svg?branch=master)
+[![CI](https://github.com/TheDarkMen3000/PTP/workflows/CI/badge.svg?branch=master)](https://github.com/TheDarkMen3000/PTP/actions?query=workflow%3ACI)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/<your-org>/<your-project>)
 
 # PTP
 
