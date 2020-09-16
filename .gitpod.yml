@@ -1,0 +1,16 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: git lfs pull
+  - name: LaTeX auto-rebuild
+    command: >
+      while find . -name '*.tex' | xargs inotifywait -qqre modify .; do \
+        latexmk -pdf ; \
+      done
+  - name: Terminal
+
+vscode:
+  extensions:
+    - James-Yu.latex-workshop@8.11.1:FJO7gUiiukqrFr3H15q9kQ==
+    - efoerster.texlab@2.2.0:W464tup5XwEapOzqejCHaA==
