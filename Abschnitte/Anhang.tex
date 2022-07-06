@@ -1,13 +1,16 @@
-% !TEX root=../main.tex
-\pagenumbering{Roman}
-\setcounter{page}{\value{pageAussen}}
-\addtitleNoNumber{Anhang}
+\documentclass[../main.tex]{subfiles}
 
-\newpage
-\addtitleNoNumber{Glossar}
+\begin{document}
+  
 
-\newpage
-\ihead*{Literaturverzeichnis}
-\printbibliography[title=Literaturverzeichnis, heading=bibintoc]
-\newpage
-\eid
+  \addsec{Anhang}
+
+  \newpage
+  \addsec{Glossar}
+
+  \newpage
+  
+  \printbibliography[title=Literaturverzeichnis, heading=bibintoc]
+  \newpage
+  \eid
+\end{document}

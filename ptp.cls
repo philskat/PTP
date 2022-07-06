@@ -2,17 +2,25 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ptp}[2019-07-17]
 
-\LoadClass[fontsize=12pt, parskip]{scrartcl}
+\LoadClass[%
+	12pt, 
+	parskip=full,
+	toc=flat,
+	toc=listof,
+	toc=bib,
+	toc=sectionentrywithdots
+]{scrartcl}
 
-\usepackage[top=3cm, bottom=3cm, left=3.5cm, right=3.5cm]{geometry}
-\usepackage{graphicx}
-\usepackage{xcolor}
-\usepackage{tabu}
-\usepackage[onehalfspacing]{setspace}
-\usepackage{scrlayer-scrpage}
-\usepackage[ngerman]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[ddmmyyyy]{datetime}
+\RequirePackage{geometry}
+\RequirePackage{xcolor}
+\RequirePackage[onehalfspacing]{setspace}
+\RequirePackage{times}
+\RequirePackage{scrlayer-scrpage}
+\RequirePackage[ddmmyyyy]{datetime}
+\RequirePackage{tabu}
+
+\AfterCalculatingTypearea{\geometry{top=3cm, bottom=3cm, left=3.5cm, right=3.5cm, includefoot, head=40pt}}
+\recalctypearea
 
 \renewcommand{\dateseparator}{.}
 
@@ -70,39 +78,36 @@
 	\fi
 	im Studiengang \@studiengang \\
 	\vspace{1cm}
-	{\huge \bfseries \@thema}
+	{\huge \bfseries \@thema} \\
 	\vspace{1cm}
-	\begin{tabbing}
-		Das ist nur Text zur Ausrichtung \= des Tabstops \kill
-		Eingereicht von: \> \@author \\
-		\> geb.: \@geb{} in \@gebort \\
-		\\
-		\> \@address \\
-		\\
-		Matrikelnummer: \> \@matrikelnr \\
-		Studiengruppe: \> \@studiengruppe \\
-		\\
-		Betreuer: \> \@betreuer \\
+	\begin{tabu} to \linewidth {X[2,l] X[3,l]}
+		Eingereicht von: & \@author \\
+		 & geb.: \@geb{} in \@gebort \\
+		 & \\
+		 & \@address \\
+		 & \\
+		Matrikelnummer: & \@matrikelnr \\
+		Studiengruppe: & \@studiengruppe \\
+		 & \\
+    Betreuer & \@betreuer \\
 		\if\@zbetreuer1
-		\\
+		 & \\
 		\else
-		Zweiter Betreuer: \> \@zbetreuer \\ \\
+		Zweiter Betreuer: & \@zbetreuer \\
+		& \\
 		\fi
-		Modul: \> \@modul \\
-		\\
-		Abgabedatum: \> \@abgabe \\
-	\end{tabbing}
+		Modul: & \@modul \\
+		Abgabedatum: & \@abgabe \\
+	\end{tabu}
 	\end{center}
 	\pagenumbering{Roman}
 	\newpage
 }
 
 \newcommand{\addtitleNoNumberNoTOC}[1]{\ihead*{#1} \section*{#1}}
-\newcommand{\addtitleNoNumber}[1]{\addtitleNoNumberNoTOC{#1} \addcontentsline{toc}{section}{#1}}
-\newcommand{\addtitle}[1]{\ihead*{#1} \section{#1}}
 
 \newcommand{\eid}{
-	\addtitleNoNumber{Eidesstattliche Erklärung}
+	\addsec{Eidesstattliche Erklärung}
 	Ich erkläre an Eides statt, dass ich\if\@ptp1 mein Praxistransferprojekt \else{} meine Hausarbeit\fi
 	
 	\@thema

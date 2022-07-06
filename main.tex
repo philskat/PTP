@@ -1,8 +1,14 @@
 \documentclass{ptp}
 
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{csquotes}
 \usepackage[backend=biber, style=authoryear, autocite=footnote]{biblatex}
+\usepackage[printonlyused]{acronym}
 
-\addbibresource{lit.bib}
+\usepackage{subfiles}
+
+\bibliography{lit.bib}
 
 \studiengang{Studiengang}
 \ptp{1}
@@ -15,29 +21,42 @@
 \abgabe{dd.mm.yyyy}
 \ort{Ort der Abgabe}
 
+\automark{section}
+\renewcommand*{\sectionmarkformat}{}
+\ihead*{\headmark}
+\chead{}
+
 \begin{document}
-\maketitle
-\ohead*{\includegraphics[width=4cm]{Bilder/HS-Logo.png}}
-\input{Abschnitte/Abstract.tex}
-\newpage
-\ihead*{Inhaltsverzeichnis}
-\tableofcontents
-\newpage
-\addcontentsline{toc}{section}{Abbildungsverzeichnis}
-\ihead*{Abbildungsverzeichnis}
-\listoffigures
-\newpage
-\addtitleNoNumber{Abkürzungsverzeichnis}
-\newpage
-\addtitleNoNumber{Symbolverzeichnis}
-\newpage
-\addcontentsline{toc}{section}{Tabellenverzeichnis}
-\ihead*{Tabellenverzeichnis}
-\listoftables
-\newpage
-\input{Abschnitte/Einleitung.tex}
-\input{Abschnitte/Theorie.tex}
-\input{Abschnitte/Praxis.tex}
-\input{Abschnitte/Fazit.tex}
-\input{Abschnitte/Anhang.tex}
+  \maketitle
+  %\ohead*{\includegraphics[width=4cm]{Bilder/HS-Logo.png}}
+
+  % Abstract
+  \subfile{Abschnitte/Abstract.tex}
+  \newpage
+
+  % Verzeichnisse
+  \subfile{Abschnitte/Anfang.tex}
+  \newpage
+
+  % Inhalt
+  \newcounter{pageAussen}
+  \setcounter{pageAussen}{\value{page}}
+
+  \subfile{Abschnitte/Einleitung.tex}
+  \newpage
+
+  \subfile{Abschnitte/Theorie.tex}
+  \newpage
+
+  \subfile{Abschnitte/Praxis.tex}
+  \newpage
+
+  \subfile{Abschnitte/Fazit.tex}
+  \newpage
+
+  % Anhang
+  \pagenumbering{Roman}
+  \setcounter{page}{\value{pageAussen}}
+
+  \subfile{Abschnitte/Anhang.tex}
 \end{document}
